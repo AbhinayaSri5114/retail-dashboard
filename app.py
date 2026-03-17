@@ -12,14 +12,13 @@ st.title("🛒 Retail Analytics Dashboard")
 @st.cache_resource
 def get_connection():
     return snowflake.connector.connect(
-        user="ABHINAYASRI5114",
-        password="Abhinayasri5114",   # ⚠️ IMPORTANT
-        account="EHZKLFI-HA31254",         # ✅ EXACT FROM SCREENSHOT
-        warehouse="COMPUTE_WH",
-        database="ABHINAYA_HACKATHON_PRACTICE_DB",
-        schema="GOLD_LAYER"
+        user=st.secrets["snowflake"]["user"],
+        password=st.secrets["snowflake"]["password"],
+        account=st.secrets["snowflake"]["account"],
+        warehouse=st.secrets["snowflake"]["warehouse"],
+        database=st.secrets["snowflake"]["database"],
+        schema=st.secrets["snowflake"]["schema"]
     )
-
 # ---------------- TEST CONNECTION ----------------
 try:
     conn = get_connection()
